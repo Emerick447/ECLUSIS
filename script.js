@@ -238,7 +238,11 @@ function nouvellePartie() {
     cartesAcceptees = [];
     cartesRefusees = [];
 
-    regleChoisie = choisirRegleAleatoire();
+    const toutesLesRegles = obtenirToutesLesRegles();
+
+regleChoisie = toutesLesRegles[
+        Math.floor(Math.random()*toutesLesRegles.length)
+    ];
 
     afficherMain();
     afficherCartesAcceptees();
