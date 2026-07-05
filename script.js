@@ -220,3 +220,127 @@ function jouerCarte(index) {
     afficherCartesRefusees();
 
 }
+/* ==========================================
+            L'ÉCLUSIS - script.js
+   Partie 2/2
+========================================== */
+
+// ----------------------------
+// Nouvelle partie
+// ----------------------------
+
+function nouvellePartie() {
+
+    creerPaquet();
+    melanger();
+    distribuer(7);
+
+    cartesAcceptees = [];
+    cartesRefusees = [];
+
+    regleChoisie = choisirRegleAleatoire();
+
+    afficherMain();
+    afficherCartesAcceptees();
+    afficherCartesRefusees();
+
+    message("Nouvelle partie commencée !");
+}
+
+// ----------------------------
+// Popup
+// ----------------------------
+
+const popup = document.getElementById("popup");
+const boutonProposer = document.getElementById("proposerRegle");
+const boutonValider = document.getElementById("valider");
+const boutonAnnuler = document.getElementById("annuler");
+const champReponse = document.getElementById("reponse");
+
+boutonProposer.onclick = () => {
+
+    popup.classList.remove("cache");
+
+    champReponse.value = "";
+    champReponse.focus();
+
+};
+
+boutonAnnuler.onclick = () => {
+
+    popup.classList.add("cache");
+
+};
+
+// ----------------------------
+// Vérifier la proposition
+// ----------------------------
+
+boutonValider.onclick = () => {
+
+    const proposition =
+        champReponse.value.trim().toLowerCase();
+
+    const bonne =
+        regleChoisie.nom.toLowerCase();
+
+    if (proposition === bonne) {
+
+        popup.classList.add("cache");
+
+        message("🎉 Bravo ! Tu as trouvé la règle !");
+
+        setTimeout(() => {
+
+            alert(
+                "Bravo !\n\nLa règle était :\n\n" +
+                regleChoisie.nom
+            );
+
+            nouvellePartie();
+
+        }, 300);
+
+    }
+    else {
+
+        message("❌ Ce n'est pas la bonne règle.");
+
+        popup.classList.add("cache");
+
+    }
+
+};
+
+// ----------------------------
+// Touche Entrée
+// ----------------------------
+
+champReponse.addEventListener("keydown", function(e){
+
+    if(e.key==="Enter"){
+
+        boutonValider.click();
+
+    }
+
+});
+
+// ----------------------------
+// Bouton Nouvelle Partie
+// ----------------------------
+
+document
+.getElementById("nouvellePartie")
+.onclick = nouvellePartie;
+
+// ----------------------------
+// Lancement
+// ----------------------------
+
+nouvellePartie();
+
+console.log("=================================");
+console.log("L'ÉCLUSIS");
+console.log("Règle choisie :", regleChoisie.nom);
+console.log("=================================");
