@@ -2,7 +2,7 @@
             L'ÉCLUSIS - RÈGLES
    ========================================== */
 
-const REGLES = [
+const REGLES_BASE = [
 
     // -------------------------
     // COULEURS
@@ -246,7 +246,35 @@ const REGLES = [
             return rouge && carte.numero % 2 === 0;
         }
     },
+let reglesPerso = [];
 
+try {
+    const sauvegarde = localStorage.getItem("reglesPerso");
+
+    if (sauvegarde) {
+        reglesPerso = JSON.parse(sauvegarde);
+    }
+
+} catch(e) {
+
+    reglesPerso = [];
+
+}
+
+function obtenirToutesLesRegles() {
+
+    return [...REGLES_BASE, ...reglesPerso];
+
+}
+
+function sauvegarderRegles() {
+
+    localStorage.setItem(
+        "reglesPerso",
+        JSON.stringify(reglesPerso)
+    );
+
+}
     {
         nom: "Noire et impaire",
         verifier(historique, carte) {
