@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Éclusis</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>🃏 L'Éclusis</h1>
+        <p>Trouvez la règle secrète !</p>
+    </header>
+
+    <main>
+
+        <!-- Informations -->
+        <section id="infos">
+
+            <div class="bloc">
+                <h2>Message</h2>
+                <p id="message">
+                    Cliquez sur une carte pour commencer.
+                </p>
+            </div>
+
+            <div class="bloc">
+                <h2>Cartes acceptées</h2>
+                <div id="cartesAcceptees" class="zoneCartes">
+
+                </div>
+            </div>
+
+            <div class="bloc">
+                <h2>Cartes refusées</h2>
+                <div id="cartesRefusees" class="zoneCartes">
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Main du joueur -->
+        <section>
+
+            <h2>Votre main</h2>
+
+            <div id="mainJoueur">
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <button id="nouvellePartie">
+            🎲 Nouvelle partie
+        </button>
+
+        <button id="proposerRegle">
+            💡 Proposer la règle
+        </button>
+
+    </footer>
+
+    <!-- Fenêtre de proposition -->
+    <div id="popup" class="cache">
+
+        <div id="fenetre">
+
+            <h2>Proposer la règle</h2>
+
+            <input
+                id="reponse"
+                type="text"
+                placeholder="Écrivez votre réponse ici...">
+
+            <br><br>
+
+            <button id="valider">
+                Valider
+            </button>
+
+            <button id="annuler">
+                Annuler
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Les règles -->
+    <script src="regles.js"></script>
+
+    <!-- Le moteur du jeu -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
