@@ -344,3 +344,25 @@ console.log("=================================");
 console.log("L'ÉCLUSIS");
 console.log("Règle choisie :", regleChoisie.nom);
 console.log("=================================");
+// ----------------------------
+// Bouton Abandonner
+// ----------------------------
+
+document
+.getElementById("abandonner")
+.onclick = function () {
+
+    const abandon = confirm(
+        "Voulez-vous vraiment abandonner ?"
+    );
+
+    if (!abandon) return;
+
+    alert(
+        "La règle était :\n\n" +
+        regleChoisie.nom
+    );
+
+    nouvellePartie();
+
+};
