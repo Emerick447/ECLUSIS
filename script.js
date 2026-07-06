@@ -162,7 +162,84 @@ function afficherCartesRefusees() {
         let c = creerCarteHTML(carte);
 
         c.classList.add("refusee");
+document.getElementById("ajouterRegle").onclick = function(){
 
+    const nom = prompt("Nom de la règle :");
+
+    if(!nom) return;
+
+    const type = prompt(
+`Type de règle :
+
+1 = Rouge
+2 = Noire
+3 = Paire
+4 = Impaire`
+    );
+
+    let verifier = null;
+
+    switch(type){
+
+        case "1":
+
+            verifier = `
+                return carte.couleur=="♥" ||
+                       carte.couleur=="♦";
+            `;
+
+            break;
+
+        case "2":
+
+            verifier = `
+                return carte.couleur=="♠" ||
+                       carte.couleur=="♣";
+            `;
+
+            break;
+
+        case "3":
+
+            verifier = `
+                return carte.numero%2==0;
+            `;
+
+            break;
+
+        case "4":
+
+            verifier = `
+                return carte.numero%2==1;
+            `;
+
+            break;
+
+        default:
+
+            alert("Type inconnu");
+
+            return;
+
+    }
+
+    reglesPerso.push({
+
+        nom:nom,
+
+        verifier:new Function(
+            "historique",
+            "carte",
+            verifier
+        )
+
+    });
+
+    sauvegarderRegles();
+
+    alert("Règle ajoutée !");
+
+};
         zone.appendChild(c);
 
     });
